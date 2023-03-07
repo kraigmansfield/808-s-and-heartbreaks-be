@@ -21,7 +21,7 @@ User.init({
         }
     }
 },{
-    sequelize
+    sequelize,
 });
 
 module.exports=User
