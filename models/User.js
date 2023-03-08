@@ -19,6 +19,13 @@ User.init({
         validate: {
             len:[8]
         }
+    },
+    age: {
+        type: DataTypes.INTEGER,
+        allowNull:false,
+        validate:{
+            min:[18]
+        }
     }
 },{
     sequelize,
