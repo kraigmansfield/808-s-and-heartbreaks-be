@@ -30,7 +30,9 @@ const seed = async ()=> {
             password:"password4",
             age: 29
         },
-    ])
+    ],{
+        individualHooks:true
+    })
     const genres = await Genre.bulkCreate(genreSeeds);
 
     process.exit(1)
