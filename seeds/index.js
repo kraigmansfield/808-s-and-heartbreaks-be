@@ -35,6 +35,20 @@ const seed = async ()=> {
     })
     const genres = await Genre.bulkCreate(genreSeeds);
 
+    await genres[4].addLikedBy(0)
+    await users[0].addLike([2,3])
+
+    await users[0].addDislike([1,5])
+    const finalResults = await User.findByPk(1,{
+        include:[{
+            model:Genre,
+            as:"Like"
+        },{
+            model:Genre,
+            as:"Dislike"
+        }]
+    })
+    
     process.exit(1)
 }
 
