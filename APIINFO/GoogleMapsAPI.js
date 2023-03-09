@@ -18,3 +18,13 @@ if (navigator.geolocation) {
 
 
 ReverseGeocoding = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&location_type=ROOFTOP&result_type=locality&key=${Google_Maps_API_Key}`
+
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    // Retrieve the formatted address from the response
+    const address = data.results[0].formatted_address;
+    console.log(`The address is: ${address}`);
+  })
+  .catch(error => console.log(error));

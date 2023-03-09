@@ -1,19 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const{Genre} = require("../models/Genre");
+const{Genre, User} = require("../models");
+const jwt = require("jsonwebtoken");
 
-router.get('/', async (req,res) => {
-    try{
-        const genres = await Genre.findAll();
-        
-        res.json(genres);
-    } catch (err) {
+router.use(express.json());
+
+
+
+router.get("/", (req, res) => {
+    Genre.findAll({
+      include: [User],
+    })
+      .then((allGenres) => {
+        res.json(allGenres);
+      })
+      .catch((err) => {
         console.log(err);
-        res.json({
-            msg: "Error",
-            err
+        res.status(500).json({
+          msg: "An error has occurred",
+          err,
         });
-    }
-});
+      });
+    });
+
+
 
 module.exports=router;
