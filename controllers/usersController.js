@@ -28,6 +28,7 @@ router.post('/', (req,res) => {
     password: req.body.password,
     email: req.body.email,
     age: req.body.age,
+
   })
     .then((newUser) => {
       const token = jwt.sign(
