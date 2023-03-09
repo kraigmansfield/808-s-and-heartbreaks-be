@@ -1,5 +1,3 @@
-Google_Maps_API_Key = 'AIzaSyDuMCSDPuEw8GnQnvkHSN10dMWawij0yMY';
-
 
 // Check if geolocation is supported by the browser
 if (navigator.geolocation) {
@@ -17,7 +15,7 @@ if (navigator.geolocation) {
   }
 
 
-ReverseGeocoding = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&location_type=ROOFTOP&result_type=locality&key=${Google_Maps_API_Key}`
+ReverseGeocoding = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&location_type=ROOFTOP&result_type=locality&key=${env.process.Google_Maps_API_Key}`
 
 
 fetch(url)
