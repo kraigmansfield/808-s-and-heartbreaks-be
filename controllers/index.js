@@ -11,5 +11,3 @@ router.use("/api/users",usersController)
 router.use("/",frontEndController)
 
 module.exports = router;
-
-module.exports = router;
