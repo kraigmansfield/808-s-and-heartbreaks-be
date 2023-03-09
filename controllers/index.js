@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const usersController = require("./usersController");
-const genreController = require("./genreController");
 
-router.get("/sessionData",(req,res)=>res.json(req.session))
+const app = express();
 
-router.use("/api/genres",genreController)
-router.use("/api/users",usersController)
+const usersRoutes = require("./usersController");
+app.set("/api/users",usersRoutes);
+
+const genreRoutes = require("./genreController");
+app.set("/api/genres",genreRoutes);
 
 
 module.exports = router;
