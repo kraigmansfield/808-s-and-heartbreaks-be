@@ -13,7 +13,10 @@ router.use(express.json());
 
 router.get("/", (req, res) => {
     Genre.findAll({
-      include: [User],
+      include: {
+        all: true,
+        nested:true,
+      },
     })
       .then((allGenres) => {
         res.json(allGenres);
@@ -27,7 +30,7 @@ router.get("/", (req, res) => {
       });
     });
 
-console.log(router)
+
 
 router.get("/genres", (req, res) => {
     spotifyApi.getAvailableGenreSeeds()
