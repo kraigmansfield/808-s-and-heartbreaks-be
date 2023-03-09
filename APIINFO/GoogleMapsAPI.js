@@ -22,7 +22,7 @@ fetch(url)
   .then(response => response.json())
   .then(data => {
     // Retrieve the formatted address from the response
-    const address = data.results[0].formatted_address;
-    console.log(`The address is: ${address}`);
+    const city = data.results[0].formatted_address;
+    console.log(`The address is: ${city}`);
   })
   .catch(error => console.log(error));
