@@ -23,6 +23,6 @@ router.get("/", (req, res) => {
       });
     });
 
-
+console.log(router)
 
 module.exports=router;
