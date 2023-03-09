@@ -24,9 +24,11 @@ router.get("/", (req, res) => {
   //signup
 router.post('/', (req,res) => {
   User.create({
-    username: req.body.name,
+    username: req.body.username,
     password: req.body.password,
     email: req.body.email,
+    age: req.body.age,
+
   })
     .then((newUser) => {
       const token = jwt.sign(
