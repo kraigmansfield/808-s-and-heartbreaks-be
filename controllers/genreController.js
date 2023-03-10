@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const{Genre} = require("../models/Genre");
 var SpotifyWebApi = require('spotify-web-api-node');
 var spotifyApi = new SpotifyWebApi();
 const{Genre, User} = require("../models");
