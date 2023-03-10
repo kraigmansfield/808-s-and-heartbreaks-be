@@ -73,8 +73,10 @@ fetch(url)
   .then(data => {
     // Retrieve the formatted address from the response
     const city = data.results[0].formatted_address;
+
     console.log(`The address is in: ${city}`);
     console.log(city);
+
 
   })
   .catch(error => console.log(error));
