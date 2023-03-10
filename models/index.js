@@ -3,19 +3,23 @@ const Genre = require('./Genre');
 
 User.belongsToMany(Genre,{
     through:"LikedGenre",
-    as:"Like"
+    as:"Like",
+    
 });
 Genre.belongsToMany(User,{
     through:"LikedGenre",
-    as:"LikedBy"
+    as:"LikedBy",
+
 });
 User.belongsToMany(Genre,{
     through:"DislikedGenre",
-    as:"Dislike"
+    as:"Dislike",
+
 });
 Genre.belongsToMany(User,{
     through:"DislikedGenre",
-    as:"DislikedBy"
+    as:"DislikedBy",
+
 });
 
 module.exports = {

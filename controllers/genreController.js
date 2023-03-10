@@ -12,7 +12,10 @@ router.use(express.json());
 
 router.get("/", (req, res) => {
     Genre.findAll({
-      include: [User],
+      include: {
+        all: true,
+        nested:true,
+      },
     })
       .then((allGenres) => {
         res.json(allGenres);
@@ -26,16 +29,26 @@ router.get("/", (req, res) => {
       });
     });
 
-console.log(router)
 
-router.get("/genres", (req, res) => {
-    spotifyApi.getAvailableGenreSeeds()
-    .then(function(data) {
-      let genreSeeds = data.body;
-      console.log(genreSeeds);
-    }, function(err) {
-      console.log('Something went wrong!', err);
-    })
-  });
+
+// router.get("/genres", (req, res) => {
+//     spotifyApi.getAvailableGenreSeeds()
+//     .then(function(data) {
+//       let genreSeeds = data.body;
+//       console.log(genreSeeds);
+//     }, function(err) {
+//       console.log('Something went wrong!', err);
+//     })
+//   });
+
+  // spotifyApi.getMyRecentlyPlayedTracks({
+  //   limit : 10
+  // }).then(function(data) {
+  //     // Output items
+  //     console.log("Your 10 most recently played tracks are:");
+  //     data.body.items.forEach(item => console.log(item.track));
+  //   }, function(err) {
+  //     console.log('Something went wrong!', err);
+  //   });
 
 module.exports=router;
