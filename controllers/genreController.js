@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
+var SpotifyWebApi = require('spotify-web-api-node');
+var spotifyApi = new SpotifyWebApi();
 const{Genre, User} = require("../models");
 const jwt = require("jsonwebtoken");
+
 
 router.use(express.json());
 
@@ -27,5 +30,15 @@ router.get("/", (req, res) => {
     });
 
 
+
+router.get("/genres", (req, res) => {
+    spotifyApi.getAvailableGenreSeeds()
+    .then(function(data) {
+      let genreSeeds = data.body;
+      console.log(genreSeeds);
+    }, function(err) {
+      console.log('Something went wrong!', err);
+    })
+  });
 
 module.exports=router;
