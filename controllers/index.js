@@ -11,4 +11,6 @@ const spotifyRoutes = require("./SpotifyAPI");
 router.use("/api/spotify",spotifyRoutes);
 
 
+
+
 module.exports = router;
