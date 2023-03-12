@@ -1,28 +1,39 @@
-
-// Check if geolocation is supported by the browser
-if (navigator.geolocation) {
-    // Get the user's current position
-    navigator.geolocation.getCurrentPosition(function(position) {
-      // Retrieve the latitude and longitude values
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-    }, function(error) {
-      console.log(error);
-    });
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
+import './App.css';
+import React,{useState} from 'react';
+// import dotenv from "dotenv";
 
 
-ReverseGeocoding = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&location_type=ROOFTOP&result_type=locality&key=${env.process.Google_Maps_API_Key}`
+function App() {
+  const [city,setCity] = useState('');
+  React.useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
 
-
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    // Retrieve the formatted address from the response
-    const address = data.results[0].formatted_address;
-    console.log(`The address is: ${address}`);
+      console.log(position)
+      let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&location_type=ROOFTOP&result_type=locality&key=${process.env.GOOGLE_MAPS_API_KEY}`
+      
+      
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          console.log(process.env.REACT_APP_GOOGLE_MAPS_API_KEY)
+          // Retrieve the formatted address from the response
+          const cityName = data.plus_code.compound_code.split(',')[0].split(' ').splice(1,3).join(' ').trim();
+      
+          console.log(`The address is in: ${cityName}`);
+          console.log(cityName);
+      
+          setCity(cityName)
+        })
+        .catch(error => console.log(error));
+    })
   })
-  .catch(error => console.log(error));
+  return (
+    <div className="App">
+        <h1>{city}</h1>
+    </div>
+  );
+}
+
+
+export default App;
