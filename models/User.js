@@ -28,6 +28,7 @@ User.init({
             min:[18]
         }
     }
+    ,
 },{
     sequelize,
     hooks:{

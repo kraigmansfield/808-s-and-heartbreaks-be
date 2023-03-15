@@ -21,6 +21,7 @@ router.get("/", (req, res) => {
       });
   });
 
+
   //signup
 router.post('/', (req,res) => {
   User.create({
@@ -127,6 +128,64 @@ router.get('/:id',(req,res) => {
       err,
     });
   });
+});
+
+
+//add like
+router.post("/addLike/:userId", async (req, res) => {
+  try {
+   
+    const userObj = await User.findByPk(req.params.userId);
+    console.log(userObj)
+    await userObj.addLike(req.body.genreIds);
+    return res.json({ msg: "genre added to likes!" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: err });
+  }
+});
+
+
+//add dislike
+router.post("/addDislike/:userId", async (req, res) => {
+  try {
+   
+    const userObj = await User.findByPk(req.params.userId);
+    console.log(userObj)
+    await userObj.addDislike(req.body.genreIds);
+    return res.json({ msg: "genre added to dislikes!" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: err });
+  }
+});
+
+
+//remove like
+router.post("/removeLike/:userId", async (req, res) => {
+  try {
+  
+    const userObj = await User.findByPk(req.params.userId);
+    await userObj.removeLike(req.body.genreId);
+    return res.json({ msg: "genre removed from likes!" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: err });
+  }
+});
+
+
+//remove dislike
+router.post("/removeDislike/:userId", async (req, res) => {
+  try {
+   
+    const userObj = await User.findByPk(req.params.userId);
+    await userObj.removeDislike(req.body.genreId);
+    return res.json({ msg: "genre removed from dislikes!" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: err });
+  }
 });
 
 module.exports = router;

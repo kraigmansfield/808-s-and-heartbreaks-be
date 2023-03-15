@@ -9,25 +9,25 @@ const seed = async ()=> {
         {
             username:"Kraig",
             email:"Kraig@kraig.kraig",
-            password:"password1",
+            password:"password",
             age: 35
         },
         {
             username:"Bret",
             email:"Bret@Bret.Bret",
-            password:"password2",
+            password:"password",
             age: 24
         },
         {
             username:"Rickie",
             email:"Rickie@rickie.rickie",
-            password:"password3",
+            password:"password",
             age: 28
         },
         {
             username:"Johnny",
             email:"Johnny@Johnny.Johnny",
-            password:"password4",
+            password:"password",
             age: 29
         },
     ],{
