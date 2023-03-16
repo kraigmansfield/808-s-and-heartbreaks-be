@@ -4,7 +4,10 @@ const { User, Genre } = require('../models')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
+
 router.use(express.json())
+
+
 
 router.get('/', (req, res) => {
   User.findAll({
@@ -29,7 +32,7 @@ router.get('/', (req, res) => {
         err,
       })
     })
-})
+}),
 
 //signup
 router.post('/', (req, res) => {
@@ -59,7 +62,7 @@ router.post('/', (req, res) => {
       console.log(err)
       res.json({ msg: 'An error has occurred', err })
     })
-})
+}),
 
 //Login
 router.post('/login', (req, res) => {
@@ -91,7 +94,7 @@ router.post('/login', (req, res) => {
       console.log(err)
       res.json({ msg: 'An error has occurred' })
     })
-})
+}),
 
 router.get('/isValidToken', (req, res) => {
   const token = req.headers?.authorization?.split(' ')[1]
@@ -112,7 +115,7 @@ router.get('/isValidToken', (req, res) => {
       msg: 'Invalid token',
     })
   }
-})
+}),
 
 //get one with genre
 router.get('/:id', (req, res) => {
@@ -138,7 +141,7 @@ router.get('/:id', (req, res) => {
         err,
       })
     })
-})
+}),
 
 //add like
 router.post('/addLike/:userId', async (req, res) => {
@@ -151,7 +154,7 @@ router.post('/addLike/:userId', async (req, res) => {
     console.log(err)
     res.status(500).json({ msg: err })
   }
-})
+}),
 
 //add dislike
 router.post('/addDislike/:userId', async (req, res) => {
@@ -164,7 +167,7 @@ router.post('/addDislike/:userId', async (req, res) => {
     console.log(err)
     res.status(500).json({ msg: err })
   }
-})
+}),
 
 //remove like
 router.post('/removeLike/:userId', async (req, res) => {
@@ -176,7 +179,7 @@ router.post('/removeLike/:userId', async (req, res) => {
     console.log(err)
     res.status(500).json({ msg: err })
   }
-})
+}),
 
 //remove dislike
 router.post('/removeDislike/:userId', async (req, res) => {
@@ -188,7 +191,7 @@ router.post('/removeDislike/:userId', async (req, res) => {
     console.log(err)
     res.status(500).json({ msg: err })
   }
-})
+}),
 
 router.post('/submit-form', async (req, res) => {
   try {

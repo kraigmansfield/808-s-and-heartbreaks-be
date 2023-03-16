@@ -27,8 +27,8 @@ User.init({
         validate:{
             min:[18]
         }
-    }
-    ,
+    },
+
 },{
     sequelize,
     hooks:{
