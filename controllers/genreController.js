@@ -31,24 +31,5 @@ router.get("/", (req, res) => {
 
 
 
-// router.get("/genres", (req, res) => {
-//     spotifyApi.getAvailableGenreSeeds()
-//     .then(function(data) {
-//       let genreSeeds = data.body;
-//       console.log(genreSeeds);
-//     }, function(err) {
-//       console.log('Something went wrong!', err);
-//     })
-//   });
-
-  // spotifyApi.getMyRecentlyPlayedTracks({
-  //   limit : 10
-  // }).then(function(data) {
-  //     // Output items
-  //     console.log("Your 10 most recently played tracks are:");
-  //     data.body.items.forEach(item => console.log(item.track));
-  //   }, function(err) {
-  //     console.log('Something went wrong!', err);
-  //   });
 
 module.exports=router;
