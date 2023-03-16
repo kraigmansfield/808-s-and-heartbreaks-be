@@ -28,6 +28,7 @@
     "react-geolocated": "^4.0.3",
     "react-native-geocoding": "^0.5.0",
     "react-native-geolocation-service": "^5.3.1",
+    "request": "^2.88.2",
     "sequelize": "^6.29.1",
     "spotify-web-api-node": "^5.0.2"
   }
